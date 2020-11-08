@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @GetMapping(value = UsersPath.GET_ALL_USERS)
-    public ArrayList<User> getAllUsers(){
+    public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
 
