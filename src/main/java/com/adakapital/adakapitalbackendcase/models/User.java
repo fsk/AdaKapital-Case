@@ -1,5 +1,6 @@
 package com.adakapital.adakapitalbackendcase.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,11 +17,22 @@ public class User {
     private String id;
 
     private String name;
-    private LocalDateTime dateOfBirth;
+
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate dateOfBirth;
+
     private Adress adress;
     private String description;
     private String createdAd;
     private String email;
-    private String updateAt;
+    private String updatedAt;
+    
+    private static User instance;
+    
+    public static synchronized User getInstance(){
+        if(instance == null)
+            instance = new User();
+        return instance;
+    }
 
 }

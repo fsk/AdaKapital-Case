@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @GetMapping(value = UsersPath.GET_BY_ID + "{id}")
-    public Optional<User> getUserById(@PathVariable("id") String id){
+    public Optional<User> getUserById(@PathVariable("id") String id) throws Exception{
         return userService.getUserById(id);
     }
 
@@ -70,7 +70,7 @@ public class UserController {
     }
 
     @PutMapping(value = UsersPath.UPDATE_BY_ID + "{id}")
-    public Optional<User> updateById(@PathVariable("id") String id, @RequestBody User user){
+    public String updateById(@PathVariable("id") String id, @RequestBody User user) throws Exception{
         return userService.updateUserById(id, user);
     }
 }
